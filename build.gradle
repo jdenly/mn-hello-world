@@ -38,5 +38,6 @@ java {
     targetCompatibility = JavaVersion.toVersion("11")
 }
 
-
-
+// Magic go faster startup option when DNS/network is slow - https://github.com/micronaut-projects/micronaut-core/issues/1552
+// WARNING: have to tell it what environment it's running in when using this to get funky cloud features etc.
+run.jvmArgs('-Dmicronaut.env.deduction=false', '-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote')
